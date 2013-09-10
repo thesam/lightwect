@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ClassFinder {
 
-	public List<Class> find() throws Exception {
+	public List<Class> findAll() throws Exception {
 		String classpath = System.getProperty("java.class.path");
 		List<Class> classes = new ArrayList<>();
 		for (String classpathentry : classpath.split(";")) {

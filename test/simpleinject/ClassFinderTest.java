@@ -11,11 +11,17 @@ public class ClassFinderTest {
 	public class A {
 		
 	}
+	
 	@Test
 	public void canFindClassesOnClasspath() throws Exception {
 		ClassFinder finder = new ClassFinder();
-		List<Class> find = finder.find();
+		List<Class> find = finder.findAll();
 		assertTrue(find.contains(A.class));
+	}
+	
+	@Test
+	public void canFindClassesWithAnnotation() {
+		
 	}
 
 }
