@@ -1,12 +1,9 @@
 package simpleinject;
 
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
 import java.util.List;
 
 public class ClassFinder {
@@ -40,6 +37,22 @@ public class ClassFinder {
 			}
 		}
 		return classes;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public List<Class> findWithConstructorAnnotation(Class annotation) throws Exception {
+		List<Class> classes = findAll();
+		List<Class> classesWithAnnotation = new ArrayList<>();
+		for (Class clazz : classes) {
+			Constructor[] constructors = clazz.getDeclaredConstructors();
+			for (Constructor constructor : constructors) {
+				Annotation anno = constructor.getAnnotation(annotation);
+				if (anno != null) {
+					classesWithAnnotation.add(clazz);
+				}
+			}
+		}
+		return classesWithAnnotation;
 	}
 
 }
