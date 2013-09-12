@@ -3,6 +3,8 @@ package simpleinject;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 
 import org.junit.Before;
@@ -11,6 +13,11 @@ import org.junit.Test;
 public class ClassFinderTest {
 
 	private ClassFinder finder;
+
+	@Retention(RetentionPolicy.RUNTIME)
+	public @interface LightwectTestAnnotation {
+
+	}
 
 	public class A {
 
