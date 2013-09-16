@@ -1,2 +1,3 @@
-simpleinject
+lightwect
 ============
+LIGHTWeight injECTion
