@@ -19,6 +19,7 @@ public class ClassFinderTest {
 
 	}
 
+	@LightwectTestAnnotation
 	public class A {
 
 	}
@@ -49,6 +50,15 @@ public class ClassFinderTest {
 				.findWithConstructorAnnotation(LightwectTestAnnotation.class);
 		assertTrue(find.contains(B.class));
 		assertFalse(find.contains(A.class));
+	}
+	
+	@Test
+	public void canFindClassWithAnnotationOnClass() throws Exception {
+		List<Class> find = finder
+				.findWithClassAnnotation(LightwectTestAnnotation.class);
+		assertTrue(find.contains(A.class));
+		assertFalse(find.contains(B.class));
+		
 	}
 
 }
